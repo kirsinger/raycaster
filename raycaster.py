@@ -57,14 +57,11 @@ def draw_player_pov(player, game_map, frame, image_width=IMAGE_WIDTH, image_heig
             if not game_map.is_accessible(ray_map_x, ray_map_y):
                 column_height = image_height / (ray_range * cos(ray_angle - player.view_angle))
 
-                # TODO: this doesn't seem quite right
-                # is_cell_boundary = ((cast_ray_frame_x % game_map.cell_width == 0)
-                #                     or (cast_ray_frame_y % game_map.cell_height == 0))
-                # if is_cell_boundary:
-                #     colour = COLOURS.WHITE
-                # else:
-                #    colour = COLOURS.BLACK
-                colour = COLOURS.BLACK
+                is_cell_boundary = i % game_map.cell_width == 0
+                if is_cell_boundary:
+                    colour = COLOURS.WHITE
+                else:
+                   colour = COLOURS.BLACK
 
                 left = i
                 top = (image_height / 2) - (column_height / 2)
